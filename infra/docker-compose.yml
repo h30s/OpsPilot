@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: opspilot
+    ports:
+      - '5432:5432'
+    volumes:
+      - opspilot_pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - '6379:6379'
+    volumes:
+      - opspilot_redis_data:/data
+
+  prometheus:
+    image: prom/prometheus:latest
+    command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports:
+      - '9090:9090'
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - '9100:9100'
+
+volumes:
+  opspilot_pg_data:
+  opspilot_redis_data:

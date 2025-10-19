@@ -1,0 +1,57 @@
+groups:
+  - name: opspilot_demo
+    interval: 30s
+    rules:
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) > 0.8
+        for: 2m
+        labels:
+          severity: warning
+          service: system
+          component: memory
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is above 80% (current value: {{ $value }})"
+
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: warning
+          service: system
+          component: cpu
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% (current value: {{ $value }})"
+
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: monitoring
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "{{ $labels.job }} at {{ $labels.instance }} has been down for more than 1 minute"
+
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) < 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: system
+          component: disk
+        annotations:
+          summary: "Low disk space"
+          description: "Disk space on {{ $labels.instance }} is below 10% (current: {{ $value }})"
+
+      - alert: DatabaseConnectionPoolExhaustion
+        expr: pg_stat_database_numbackends / pg_settings_max_connections > 0.8
+        for: 2m
+        labels:
+          severity: warning
+          service: database
+          component: connection_pool
+        annotations:
+          summary: "Database connection pool near exhaustion"
+          description: "PostgreSQL connection pool is above 80% capacity"
