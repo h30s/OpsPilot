@@ -1,10 +1,16 @@
-# OpsPilot — Discord-Native AI On-Call Team
+# OpsPilot: Discord-Native AI On-Call Team
 
 A multi-agent ops copilot that triages incidents and ships safe PRs in minutes. Automated incident response with human oversight.
 
-**🎥 [Watch the Demo Video](https://www.youtube.com/watch?v=48Rrrp5pHG0)**
+## 🎥 Demo Video
 
----
+<div align="center">
+
+[![OpsPilot Demo](https://img.youtube.com/vi/48Rrrp5pHG0/0.jpg)](https://www.youtube.com/watch?v=48Rrrp5pHG0)
+
+</div>
+
+
 
 ## 🚀 Quick Start
 
@@ -58,26 +64,6 @@ Discord Bot ↔ ADK-TS Orchestrator ↔ MCP Servers
 - **PostgreSQL**: Incident storage + pgvector for semantic search
 - **Redis**: Job queue and caching
 
----
-
-## 🔧 Environment Setup
-
-### Orchestrator (`apps/orchestrator/.env`)
-```env
-DATABASE_URL=postgres://user:pass@localhost:5432/opspilot
-REDIS_URL=redis://localhost:6379
-GITHUB_TOKEN=ghp_xxx
-DISCORD_WEBHOOK_URL=your_webhook_url
-```
-
-### Discord Bot (`apps/discord-bot/.env`)
-```env
-DISCORD_BOT_TOKEN=your_bot_token
-DISCORD_GUILD_ID=your_server_id
-ORCHESTRATOR_URL=http://localhost:3000
-```
-
----
 
 ## What It Does
 
@@ -87,7 +73,7 @@ ORCHESTRATOR_URL=http://localhost:3000
 4. **Seamless Integration**: Links incidents to Jira tickets, PagerDuty, GitHub PRs
 5. **Continuous Learning**: Updates runbooks from resolved incidents
 
----
+
 
 ## Running & Testing
 
