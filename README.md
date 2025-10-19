@@ -45,16 +45,16 @@ npm run register:commands
 
 ---
 
-## 🏗️ Architecture
+## 🧩 System Architecture
 
-```
-Discord Bot ↔ ADK-TS Orchestrator ↔ MCP Servers
-     │               │                    │
-     └─ User Interface
-                    │
-     └─ Agents (Watcher/Triage/Fixer)
-                    │
-     └─ GitHub/Jira/PagerDuty/Prometheus/Runbook
+```mermaid
+flowchart TD
+    A[💬 Discord Bot] <--> B[⚙️ ADK-TS Orchestrator]
+    B <--> C[🧠 MCP Servers]
+
+    A --> D[🖥️ User Interface]
+    D --> E[🤖 Agents: Watcher, Triage, Fixer]
+    E --> F[🔗 Integrations: GitHub, Jira, PagerDuty, Prometheus, Runbooks]
 ```
 
 ### Core Services
@@ -91,4 +91,4 @@ npm run test:demo
 
 The demo simulates real incidents and shows the full workflow from alert → triage → PR creation.
 
-**Built with ADK-TS • Discord-Native • Human-in-the-Loop AI**
+Built with ❤️ by **Himanshu Soni — aka h30s**
