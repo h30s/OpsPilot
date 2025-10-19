@@ -6,13 +6,13 @@ A multi-agent ops copilot that triages incidents and ships safe PRs in minutes. 
 
 <div align="center">
   <!-- Clickable Screenshot -->
-  <a href="https://www.youtube.com/watch?v=48Rrrp5pHG0" target="_blank">
+  <a href="https://youtu.be/IwjIDc4nbj0" target="_blank">
     <img src="https://github.com/user-attachments/assets/2100f932-6df8-4d98-868a-7dd76bd896f4" alt="OpsPilot Demo" width="800"/>
   </a>
   
   <!-- Buttons Inline on Same Line -->
   <br><br>
-  <a href="https://www.youtube.com/watch?v=48Rrrp5pHG0" target="_blank">
+  <a href="https://youtu.be/IwjIDc4nbj0" target="_blank">
     <button style="padding: 10px 20px; font-size: 16px; background-color: #0EA5E9; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
       Watch Demo
     </button>
